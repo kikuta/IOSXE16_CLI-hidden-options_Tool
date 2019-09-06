@@ -1,4 +1,5 @@
-# 1. Overview: Enjoy IOS XE hidden options
+# 1. Overview: CLI Hidden options search script for IOS XE 16.X
+
 * According to the release note of 16.8.1a, "Accessing Hidden Commands" is documented as a new feature. Now hidden command options will be exposed if "service internal" is configured.
 * [Release note](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/16-8/release_notes/ol-16-8-9300.html#id_65400)
 * "service internal" should not be configured as a default because it is almost for testing, trouble shooting, or evaluation.
@@ -117,3 +118,4 @@ Cat9300-01#
 
 ## Reference
 Japanese article is also available on [Qiita](https://qiita.com/kikuta1978/items/12eb9aeec3ec6444a73a).
+Enjoy IOS XE hidden options!
