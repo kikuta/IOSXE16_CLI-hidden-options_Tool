@@ -6,7 +6,9 @@
 * Having fun is important eventhough it is meaningless technically. If it is hidden, we want to know what it is. Enjoy!
 
 # 2. Accessing Hidden Commands feature - 16.8.1a
-## Normal view
+## Example
+### 2.1 Normal view
+7 options are found for "show processes" IOS command.
 ```
 Cat9300-01#show processes ?
   <1-2147483647>  IOS(d) Process Number
@@ -20,12 +22,13 @@ Cat9300-01#show processes ?
   <cr>            <cr>
 ```
 
-## Configure "service internal" for "Accessing Hidden Commands"
+### 2.2 Configure "service internal" for "Accessing Hidden Commands"
 ```
 Cat9300-01(config)#service internal
 ```
 
-## Some hidden options are exhibited
+### 2.3 Some hidden options are exhibited
+11 options are found after "service internal" is configured. So 4 options are IOS hidden options.
 ```
 Cat9300-01#show processes ?
   <1-2147483647>  IOS(d) Process Number
@@ -44,7 +47,11 @@ Cat9300-01#show processes ?
 ```
 
 # 3. How this script works
-## IOS XE Guestshell
+With this script, it is easy to find how many and what kind of options for IOS CLI are available. The script works on IOS XE Guestshell, so IOS XE Guestshell must be configured and the script should be on the  flash of routers/switches.
+
+## Prerequisite: IOS XE Guestshell
+IOS Guestshell must be enabled as follow previously. hiddenop.py are put on flash of Cat9300 for this example. Python2.7 is provided as default with IOS XE Guestshell so we do not have to install any program.
+
 ```
 Cat9300-01#sh ver | i IOSXE  
 Cisco IOS Software [Fuji], Catalyst L3 Switch Software (CAT9K_IOSXE), Version 16.8.1a, RELEASE SOFTWARE (fc1)
@@ -63,7 +70,8 @@ Python 2.7.5
 hiddenop.py
 ```
 
-## Example: Running script from guestshell
+## 3.1 Example: Running script from guestshell
+The script is executed on the guestshell directly as follow.
 ```
 [guestshell@guestshell kikuta]$ python hiddenop.py
 Please input exec command with ? >show ip ospf ?    
@@ -82,7 +90,9 @@ Number of Hidden Command in exec mode is : 5
 [guestshell@guestshell kikuta]$
 ```
 
-## Example: Running script from IOS XE
+## 3.2 Example: Running script from IOS XE
+The script is also executed from IOS XE exec mode and it might be more practical.
+
 ```
 Cat9300-01#guestshell run python hiddenop.py
 Please input exec command with ? >show ip bgp ?
@@ -104,3 +114,6 @@ Number of Hidden Command in exec mode is : 8
 
 Cat9300-01#
 ```
+
+## Reference
+Japanese article is also available on [Qiita](https://qiita.com/kikuta1978/items/12eb9aeec3ec6444a73a).
